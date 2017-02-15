@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self playURL:[NSURL URLWithString:@"http://120.25.226.186:32812/resources/videos/minion_01.mp4"]];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -31,7 +31,6 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self playURL:[NSURL URLWithString:@"http://120.25.226.186:32812/resources/videos/minion_01.mp4"]];
 }
 
 
@@ -45,6 +44,10 @@
 }
 
 - (void)playURL:(NSURL *)url{
+    if (self.player) {
+        [self.player stop];
+        [self.player.view removeFromSuperview];
+    }
     self.player = [[HussarPlayerViewController alloc]initWithURL:url];
     self.player.delegate = self;
     self.player.view.frame = self.playerview.bounds;

@@ -22,8 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
+    //横屏模式下禁用侧滑手势返回
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -47,6 +47,10 @@
 }
 
 - (void)playURL:(NSURL *)url{
+    if (self.player) {
+        [self.player stop];
+        [self.player.view removeFromSuperview];
+    }
     self.player = [[HussarPlayerViewController alloc]initWithURL:url];
     self.player.delegate = self;
     self.player.view.frame = self.playerview.bounds;
