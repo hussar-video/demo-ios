@@ -51,6 +51,7 @@
     self.player = [[HussarPlayerViewController alloc]initWithURL:url];
     self.player.delegate = self;
     self.player.view.frame = self.playerview.bounds;
+    self.player.view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin;
     [self.playerview addSubview:self.player.view];
 }
 - (void)didReceiveMemoryWarning {

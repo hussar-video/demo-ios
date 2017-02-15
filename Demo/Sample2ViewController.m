@@ -48,9 +48,13 @@
         [self.player stop];
         [self.player.view removeFromSuperview];
     }
+    if (self.playingVideoCell.playURL == nil) {
+        return;
+    }
     self.player = [[HussarPlayerViewController alloc]initWithURL:self.playingVideoCell.playURL];
     self.player.delegate = self;
     self.player.view.frame = self.playingVideoCell.playerview.bounds;
+    self.player.view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin;
     self.player.controlView.hidden = YES;
     [self.playingVideoCell.playerview addSubview:self.player.view];
 }
@@ -111,8 +115,10 @@
         videocell = [visiableCells objectAtIndex:1];
     }else if (visiableCells.count == 2){
         videocell = [visiableCells lastObject];
-    }else{
-        NSLog(@"visiable error");
+    }else if(visiableCells.count == 4){
+        videocell = [visiableCells objectAtIndex:2];
+    }else {
+        NSLog(@"visiable error:%zd",visiableCells.count);
     }
     
     if (isFirst) {
@@ -236,7 +242,7 @@
 #pragma mark -
 - (BOOL)shouldAutorotate
 {
-    return NO;
+    return YES;
 }
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations
