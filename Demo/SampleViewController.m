@@ -66,8 +66,6 @@
 #pragma mark - ButtonEvent
 
 - (IBAction)clickNextButton:(id)sender {
-    [self.player stop];
-    [self.player.view removeFromSuperview];
     [self playURL:[NSURL URLWithString:@"http://120.25.226.186:32812/resources/videos/minion_02.mp4"]];
 }
 #pragma mark - HussarPlayerViewControllerDelegate
