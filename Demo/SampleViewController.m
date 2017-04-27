@@ -48,6 +48,8 @@
         [self.player stop];
         [self.player.view removeFromSuperview];
     }
+    [HussarPlayerViewController setMaxBufferSize:5 * 1024 * 1024];//设置5MB缓冲大小
+    
     self.player = [[HussarPlayerViewController alloc]initWithURL:url];
     self.player.delegate = self;
     self.player.view.frame = self.playerview.bounds;

@@ -212,4 +212,27 @@ typedef NS_ENUM(NSUInteger, HussarBufferType) {
  */
 - (BOOL)isPlaying;
 
+/**
+ 设置最大缓冲池大小(需在初始化播放器前设置)
+ 默认:15 * 1024 * 1024 (15MB)
+ */
++ (void)setMaxBufferSize:(int)maxBufferSize;
+
+/**
+ 设置首次缓存大小(需在初始化播放器前设置)
+ 默认:100(毫秒)
+ */
++ (void)setLoadingBufferTime:(int)bufferTime;
+
+/**
+ 设置再次缓冲缓存大小(需在初始化播放器前设置)
+ 默认:1000(毫秒)
+ */
++ (void)setNextBufferTime:(int)bufferTime;
+
+/**
+ 设置反复缓冲后缓存大小(需在初始化播放器前设置)
+ 默认:5000(毫秒)
+ */
++ (void)setLastBufferTime:(int)bufferTime;
 @end
